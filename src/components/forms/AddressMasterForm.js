@@ -105,8 +105,8 @@ const AddressMasterForm = () => {
     }
     const handleChangeCountry =(e)=>{
       console.log("0000mmm",e.target.value);
-console.log("111bhb",stateDataValues);
-const abc = stateDataValues.filter((data)=> data.country_id== e.target.value)
+console.log("stateDataValues",stateDataValues);
+const abc = stateDataValues.filter((data)=> data.text== e.target.value)
 setStateDataValues(abc)
 console.log("abc",abc);
 
@@ -128,10 +128,11 @@ console.log("abc",abc);
       // console.log("abc1",abc);
         console.log(JSON.stringify(e.target.value))
          var stateDetails =e.target.value;
-         console.log(stateDetails)
+         console.log(stateDetails,"stateDetails")
     
             setStateId(e.target.value)
-            var result = stateDataValues.filter(state => state.country_id == e.target.value)
+            var result = stateDataValues?.filter(state => state.country_id == e.target.value)
+            console.log("result",result[0])
             setCityValues(result[0].textState)
     
             console.log(result)}
@@ -142,7 +143,9 @@ console.log("abc",abc);
                  console.log(cityDetails)
             
                  setCityId(e.target.value)
-                    var result = values.filter(city => city.id == e.target.value)
+                 console.log("values",values)
+                    var result = values?.filter(city => city.id == e.target.value)
+                    console.log("result",result)
                     setPinValues(result[0].city)
             
                     console.log(result)}
@@ -204,7 +207,7 @@ console.log("abc",abc);
     use.pincode&&
     <tr key={index}>
      <th scope='col' >{index+1}</th>
-     <td> {use.text}</td>
+     <td> {use.country_id}</td>
      <td >{use.textState}</td>
      <td >{use.city}</td> 
      <td >{use.pincode}</td>  
